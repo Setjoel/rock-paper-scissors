@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Rock|Paper|Scissors Game</title>
+    <meta charset="utf-8">
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function computerPlay() {
+            let computerChoice = Math.floor(Math.random() * 3 + 1);
+            switch (computerChoice) {
+                case 1: return 'rock';
+                case 2: return 'paper';
+                case 3: return 'scissors';
+
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if ((playerSelection.toLowerCase() == 'scissors') && (computerSelection == 'rock')) {
+                alert("You Lose! Rock beats Scissors");
+                ++computerScore;
+            }
+            else if ((playerSelection.toLowerCase() == 'rock') && (computerSelection == 'paper')) {
+                alert("You Lose! Paper beats Rock");
+                ++computerScore;
+            }
+            else if ((playerSelection.toLowerCase() == 'paper') && (computerSelection == 'scissors')) {
+                alert("You Lose! Scissors beats Paper");
+                ++computerScore;
+            }
+            else if (((playerSelection.toLowerCase() == 'rock') && (computerSelection == 'rock')) ||
+                ((playerSelection.toLowerCase() == 'paper') && (computerSelection == 'paper')) ||
+                ((playerSelection.toLowerCase() == 'scissors') && (computerSelection == 'scissors'))) {
+                alert("You Tie!");
+            }
+            else {
+                alert("You Win!");
+                ++playerScore;
+            }
+
+
+        }
+
+        function game() {
+            for (let rounds = 1; rounds <= 5; rounds++) {
+                let playerChoice = prompt("Enter choice [rock, paper, scissors] to play!");
+
+                playRound(playerChoice, computerPlay);
+            }
+
+            if (playerScore > computerScore) {
+                alert("Player Won! \n" + "Player Score: " + playerScore
+                    + ", " + "Computer Score: " + computerScore);
+            }
+            else {
+                alert("Computer Won! \n" + "Player Score: " + playerScore
+                    + ", " + "Computer Score: " + computerScore);
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="game()">
+
+
+</body>
+
+</html>
